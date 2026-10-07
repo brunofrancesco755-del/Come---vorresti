@@ -1,1 +1,382 @@
 
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Come Voteresti?</title>
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f2f4f7;
+  color: #222;
+}
+
+header {
+  background: #123b66;
+  color: white;
+  text-align: center;
+  padding: 25px 15px;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 30px;
+}
+
+header p {
+  margin: 8px 0 0;
+}
+
+.container {
+  max-width: 700px;
+  margin: auto;
+  padding: 18px;
+}
+
+.box {
+  background: white;
+  padding: 20px;
+  margin-bottom: 18px;
+  border-radius: 14px;
+  box-shadow: 0 2px 8px rgba(0,0,0,.08);
+}
+
+h2 {
+  color: #123b66;
+}
+
+.categoria {
+  display: inline-block;
+  background: #e8eef5;
+  color: #123b66;
+  padding: 6px 10px;
+  border-radius: 20px;
+  font-size: 13px;
+}
+
+.testo {
+  line-height: 1.5;
+}
+
+button {
+  width: 100%;
+  border: 0;
+  border-radius: 10px;
+  padding: 14px;
+  margin-top: 10px;
+  font-size: 17px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.favorevole {
+  background: #d9f2df;
+  color: #176b2c;
+}
+
+.contrario {
+  background: #f8dada;
+  color: #9b1c1c;
+}
+
+.astenuto {
+  background: #eeeeee;
+  color: #555;
+}
+
+.risultati {
+  display: none;
+  margin-top: 18px;
+  padding: 15px;
+  background: #f7f9fb;
+  border-radius: 10px;
+}
+
+.barra {
+  height: 18px;
+  background: #ddd;
+  border-radius: 10px;
+  overflow: hidden;
+  margin: 5px 0 12px;
+}
+
+.fav-bar {
+  height: 100%;
+  background: #38a169;
+}
+
+.con-bar {
+  height: 100%;
+  background: #d64545;
+}
+
+.ast-bar {
+  height: 100%;
+  background: #777;
+}
+
+.reset {
+  background: #123b66;
+  color: white;
+}
+
+footer {
+  text-align: center;
+  padding: 25px 15px;
+  color: #666;
+  font-size: 13px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>Come Voteresti?</h1>
+  <p>La voce dei cittadini sulle proposte da votare</p>
+</header>
+
+<div class="container">
+
+<div class="box">
+  <h2>Benvenuto</h2>
+
+  <p>
+    Questa piattaforma permette ai cittadini di esprimere
+    come voterebbero su una proposta.
+  </p>
+
+  <p>
+    <strong>Importante:</strong> il voto espresso su questa
+    piattaforma non ha valore istituzionale.
+  </p>
+
+  <p>
+    L'obiettivo è conoscere l'opinione dei cittadini in modo
+    semplice, trasparente e neutrale.
+  </p>
+</div>
+
+
+<div class="box">
+
+  <span class="categoria">TRASPORTI</span>
+
+  <h2>Potenziare il trasporto pubblico locale</h2>
+
+  <p class="testo">
+    Proposta: aumentare le risorse destinate al trasporto
+    pubblico locale per migliorare frequenza, collegamenti
+    e qualità del servizio.
+  </p>
+
+  <button class="favorevole" onclick="vota('favorevole')">
+    👍 FAVOREVOLE
+  </button>
+
+  <button class="contrario" onclick="vota('contrario')">
+    👎 CONTRARIO
+  </button>
+
+  <button class="astenuto" onclick="vota('astenuto')">
+    ⚪ ASTENUTO
+  </button>
+
+  <div class="risultati" id="risultati">
+
+    <strong>Risultato della votazione</strong>
+
+    <p>
+      Favorevoli:
+      <span id="favorevoli">0</span>%
+    </p>
+
+    <div class="barra">
+      <div class="fav-bar" id="barraFav"></div>
+    </div>
+
+    <p>
+      Contrari:
+      <span id="contrari">0</span>%
+    </p>
+
+    <div class="barra">
+      <div class="con-bar" id="barraCon"></div>
+    </div>
+
+    <p>
+      Astenuti:
+      <span id="astenuti">0</span>%
+    </p>
+
+    <div class="barra">
+      <div class="ast-bar" id="barraAst"></div>
+    </div>
+
+    <p>
+      <strong>Voti totali:</strong>
+      <span id="totale">0</span>
+    </p>
+
+  </div>
+
+</div>
+
+
+<div class="box">
+
+  <span class="categoria">AMBIENTE</span>
+
+  <h2>Aumentare le aree verdi nelle città</h2>
+
+  <p class="testo">
+    Proposta: aumentare gli investimenti per creare e
+    mantenere parchi e aree verdi nelle città.
+  </p>
+
+  <button onclick="alert('Questa proposta sarà attivata nella prossima versione.')">
+    👍 FAVOREVOLE
+  </button>
+
+  <button onclick="alert('Questa proposta sarà attivata nella prossima versione.')">
+    👎 CONTRARIO
+  </button>
+
+  <button onclick="alert('Questa proposta sarà attivata nella prossima versione.')">
+    ⚪ ASTENUTO
+  </button>
+
+</div>
+
+
+<div class="box">
+
+  <span class="categoria">PUBBLICA AMMINISTRAZIONE</span>
+
+  <h2>Semplificare i servizi digitali pubblici</h2>
+
+  <p class="testo">
+    Proposta: rendere più semplici e accessibili i servizi
+    digitali della Pubblica Amministrazione.
+  </p>
+
+  <button onclick="alert('Questa proposta sarà attivata nella prossima versione.')">
+    👍 FAVOREVOLE
+  </button>
+
+  <button onclick="alert('Questa proposta sarà attivata nella prossima versione.')">
+    👎 CONTRARIO
+  </button>
+
+  <button onclick="alert('Questa proposta sarà attivata nella prossima versione.')">
+    ⚪ ASTENUTO
+  </button>
+
+</div>
+
+
+<button class="reset" onclick="azzera()">
+  Azzera il mio voto
+</button>
+
+</div>
+
+<footer>
+  Come Voteresti?<br>
+  Piattaforma civica indipendente e neutrale.
+</footer>
+
+
+<script>
+
+let voti = {
+  favorevole: 0,
+  contrario: 0,
+  astenuto: 0
+};
+
+function vota(scelta) {
+
+  const precedente = localStorage.getItem("mioVoto");
+
+  if (precedente) {
+    voti[precedente]--;
+  }
+
+  voti[scelta]++;
+
+  localStorage.setItem("mioVoto", scelta);
+
+  aggiorna();
+
+  alert("Il tuo voto è stato registrato.");
+}
+
+function aggiorna() {
+
+  const totale =
+    voti.favorevole +
+    voti.contrario +
+    voti.astenuto;
+
+  if (totale === 0) {
+    return;
+  }
+
+  const fav =
+    Math.round((voti.favorevole / totale) * 100);
+
+  const con =
+    Math.round((voti.contrario / totale) * 100);
+
+  const ast =
+    100 - fav - con;
+
+  document.getElementById("favorevoli").textContent = fav;
+  document.getElementById("contrari").textContent = con;
+  document.getElementById("astenuti").textContent = ast;
+
+  document.getElementById("barraFav").style.width =
+    fav + "%";
+
+  document.getElementById("barraCon").style.width =
+    con + "%";
+
+  document.getElementById("barraAst").style.width =
+    ast + "%";
+
+  document.getElementById("totale").textContent =
+    totale;
+
+  document.getElementById("risultati").style.display =
+    "block";
+}
+
+function azzera() {
+
+  localStorage.removeItem("mioVoto");
+
+  voti = {
+    favorevole: 0,
+    contrario: 0,
+    astenuto: 0
+  };
+
+  document.getElementById("risultati").style.display =
+    "none";
+
+  alert("Il tuo voto è stato azzerato.");
+}
+
+</script>
+
+</body>
+</html>
